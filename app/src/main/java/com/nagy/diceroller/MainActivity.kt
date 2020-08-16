@@ -8,14 +8,16 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var  diceImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val rollButton: Button = findViewById(R.id.roll_button)
-        rollButton.setOnClickListener { RollDice() }
-
+        rollButton.setOnClickListener {
+            RollDice() }
+        diceImage = findViewById(R.id.dice_image)
     }
 
     private fun RollDice() {
@@ -30,10 +32,7 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.empty_dice
         }
 
-
-        val diceImage: ImageView = findViewById(R.id.dice_image)
         diceImage.setImageResource(drawableResourse)
-
 
     }
 }
