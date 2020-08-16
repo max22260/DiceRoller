@@ -1,10 +1,9 @@
 package com.nagy.diceroller
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,22 +13,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val RollButton: Button = findViewById(R.id.roll_button)
-        RollButton.setOnClickListener {
-            RollDice()
-
-        }
-
+        val rollButton: Button = findViewById(R.id.roll_button)
+        rollButton.setOnClickListener { RollDice() }
 
     }
 
     private fun RollDice() {
 
-        val ResultText: TextView = findViewById(R.id.result_text)
+        val randomInt = Random().nextInt(5) + 1
+        val drawableResourse = when (randomInt) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.empty_dice
+        }
 
-        val RandomInt = Random().nextInt(6) + 1
 
-        ResultText.text = RandomInt.toString()
+        val diceImage: ImageView = findViewById(R.id.dice_image)
+        diceImage.setImageResource(drawableResourse)
+
 
     }
 }
